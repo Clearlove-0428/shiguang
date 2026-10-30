@@ -1,0 +1,29 @@
+[
+  {
+    "repository": "https://github.com/fanyuantaier/wechatauto-replica",
+    "checkedCommit": "6e603974bbac3bda93d88bbd6995510ae2547f5c",
+    "licenseUrl": "https://raw.githubusercontent.com/fanyuantaier/wechatauto-replica/6e603974bbac3bda93d88bbd6995510ae2547f5c/LICENSE",
+    "file": "wechatauto-replica-LICENSE.txt",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "checkedOn": "2026-10-29",
+    "scope": "License verification snapshot; not a claim that original implementation was based on this exact revision"
+  },
+  {
+    "repository": "https://github.com/anpingjing/qqnt-chat-export",
+    "checkedCommit": "1f77be86d05d40c57e3955baea73ad78ffada4f0",
+    "licenseUrl": "https://raw.githubusercontent.com/anpingjing/qqnt-chat-export/1f77be86d05d40c57e3955baea73ad78ffada4f0/LICENSE",
+    "file": "qqnt-chat-export-LICENSE.txt",
+    "sha256": "abaa836f0838ecc5867793aa5f9ef5b65a3ecf8816792ba96a07a79c5d51e9e5",
+    "checkedOn": "2026-10-29",
+    "scope": "License verification snapshot; not a claim that original implementation was based on this exact revision"
+  },
+  {
+    "repository": "https://github.com/DaizeDong/qq-history-recovery",
+    "checkedCommit": "1504fc4f39f369f54b88ffa96fc6cf46fadbe9ba",
+    "licenseUrl": "https://raw.githubusercontent.com/DaizeDong/qq-history-recovery/1504fc4f39f369f54b88ffa96fc6cf46fadbe9ba/LICENSE",
+    "file": "qq-history-recovery-LICENSE.txt",
+    "sha256": "c583ad593b3e781b27bd1356ebac43b3fea2076c1171d891cae9cce72fdccba2",
+    "checkedOn": "2026-10-29",
+    "scope": "License verification snapshot; not a claim that original implementation was based on this exact revision"
+  }
+]

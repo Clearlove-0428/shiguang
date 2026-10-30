@@ -1,0 +1,41 @@
+/* Shared experience layer: respects themes, font size, reduced motion and one content scroller. */
+:root{--ease-out:cubic-bezier(.16,1,.3,1)}
+.overview-filters{gap:10px;align-items:center;flex-wrap:wrap}
+.overview-filters .agenda-search{flex:1 1 210px;min-width:160px;max-width:480px}
+.agenda-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+.agenda-tools button{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:10px 14px;font:inherit;font-size:14px}
+.agenda-tools button[aria-pressed=true]{border-color:var(--accent,#2674ed);box-shadow:inset 0 -2px var(--accent,#2674ed)}
+.agenda-tools strong{margin-left:7px;font-variant-numeric:tabular-nums}
+.agenda-tools .tools-spacer{flex:1}
+.settings-jump{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.settings-jump button{background:var(--paper);border:1px solid var(--line);color:var(--ink);padding:10px 16px;border-radius:999px;font:inherit;font-size:14px}
+.sound-packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin:20px 0}
+.sound-choice{display:flex;align-items:center;gap:12px;text-align:left;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);padding:17px 12px;font:inherit;font-size:14px;min-height:78px}
+.sound-choice[aria-pressed=true]{border-color:var(--accent,#2674ed);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent,#2674ed) 22%,transparent)}
+.sound-choice small{display:block;font-size:11px;margin-top:5px;color:var(--muted)}
+.sound-glyph{font:28px system-ui;color:var(--accent,#2674ed)}
+.tool-actions{display:flex;flex-wrap:wrap;gap:10px}.tool-actions a{display:inline-flex;align-items:center;text-decoration:none}
+.health-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:16px 0}
+.health-item{border:1px solid var(--line);border-radius:10px;padding:14px}.health-item p{font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.7}
+.settings-card{scroll-margin-block-start:14px}
+.settings-jump{position:sticky;top:0;z-index:5;padding:10px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
+.settings-jump button{white-space:nowrap}
+.settings-card{scroll-margin-block-start:78px}
+html[data-density=compact] .schedule-row{padding:17px 20px;gap:18px}
+html[data-density=compact] .schedule-evidence p{margin:10px 0;line-height:1.55}
+html[data-density=compact] .schedule-task .task-title{font-size:var(--reading-size);line-height:1.5}
+html[data-density=compact] .schedule-date{font-size:var(--reading-size)}
+html[data-density=compact] .schedule-task{display:flex;flex-wrap:wrap;align-content:flex-start;align-items:center;gap:7px 10px}
+html[data-density=compact] .schedule-task>.task-title{flex-basis:100%;margin:0}
+html[data-density=compact] .schedule-task>.state-chip,html[data-density=compact] .schedule-task>small{margin:0}
+html[data-density=compact] .schedule-task>.edit-event{order:4;margin:0;padding:5px 8px}
+html[data-density=compact] .schedule-task>.row-actions{order:5;margin:0;gap:4px}
+html[data-density=compact] .schedule-task>.related-notices{order:6;flex-basis:100%}
+html[data-density=compact] .focus-summary{padding:10px;margin-top:8px}
+html[data-density=compact] .review-row{padding:18px 20px}
+.schedule-row,.review-row,.focus-summary{contain:style}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){html:not(.reduce-motion) button,html:not(.reduce-motion) .secondary{transition:background-color 140ms ease,border-color 140ms ease,box-shadow 180ms ease,transform 180ms var(--ease-out)}html:not(.reduce-motion) .sound-choice:hover,html:not(.reduce-motion) .agenda-tools button:hover,html:not(.reduce-motion) .settings-jump button:hover{transform:translateY(-2px)}html:not(.reduce-motion) button:active{transform:scale(.975)}}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent,#2674ed);outline-offset:3px}
+.reduce-motion .sound-choice,.reduce-motion button{transition:none!important;transform:none!important}
+@media(max-width:700px){.agenda-tools{gap:6px}.agenda-tools button{padding:9px 11px}.overview-filters .agenda-search{max-width:none;flex-basis:100%}.sound-packs{grid-template-columns:repeat(2,minmax(0,1fr))}.sound-choice{padding:12px 9px;gap:8px}html[data-density=compact] .schedule-row{padding:16px}.health-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.settings-jump{position:static}.settings-card{scroll-margin-block-start:14px}}

@@ -1,0 +1,35 @@
+{
+  "name": "shiguang-local",
+  "version": "0.15.2-beta.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/dev.mjs",
+    "test": "node scripts/test.mjs",
+    "test:ui": "node scripts/test.mjs --ui",
+    "test:native": "node scripts/test.mjs --native",
+    "build:native": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/build-native.ps1",
+    "check:source": "node scripts/check-source.mjs"
+  },
+  "dependencies": {
+    "@mozilla/readability": "0.6.0",
+    "linkedom": "0.18.13",
+    "pdfjs-dist": "5.4.624"
+  },
+  "devDependencies": {
+    "playwright": "1.58.2"
+  },
+  "description": "在本机整理通知、核对日程并提醒的 Windows 应用源码",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=24.15.0 <25"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Clearlove-0428/shiguang.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Clearlove-0428/shiguang/issues"
+  },
+  "homepage": "https://github.com/Clearlove-0428/shiguang#readme"
+}

@@ -1,0 +1,17 @@
+import{createHash}from'node:crypto';import{localStamp}from'./extract.mjs';
+export function reminderNotice(rows,defaultTime=''){
+ const details=rows.map(e=>({title:e.title,when:e.date+' '+(e.time||'日期型安排 · '+defaultTime),location:e.location||'',source:e.source||''}));
+ return {title:rows.length===1?rows[0].title:rows.length+' 项安排需要注意',body:details.map(e=>e.title+'\n'+[e.when,e.location,e.source].filter(Boolean).join(' · ')).join('\n\n'),events:details};
+}
+export class ReminderDelivery{
+ constructor({db,notify,setting,clock=()=>Date.now()}){Object.assign(this,{db,notify,setting,clock});this.busy=false;db.exec("CREATE TABLE IF NOT EXISTS reminder_delivery(id TEXT PRIMARY KEY,event_id TEXT,date TEXT,time TEXT,minutes INTEGER,state TEXT,attempts INTEGER DEFAULT 0,next_at INTEGER DEFAULT 0,error TEXT DEFAULT '')");}
+ async tick(){if(this.busy)return;this.busy=true;try{const now=this.clock(),stamp=localStamp(new Date(now)),defaultTime=this.setting('dateReminderTime','');
+ const due=this.db.prepare("SELECT * FROM events WHERE status='confirmed' AND date IS NOT NULL AND reminded_at IS NULL").all().filter(e=>(e.time||defaultTime)&&+new Date(e.date+'T'+(e.time||defaultTime))-e.remind_minutes*60000<=now);
+ this.db.exec('BEGIN');try{for(const e of due){const id=createHash('sha256').update([e.id,e.date,e.time||defaultTime,e.remind_minutes].join('|')).digest('hex');const added=this.db.prepare("INSERT OR IGNORE INTO reminder_delivery(id,event_id,date,time,minutes,state) VALUES(?,?,?,?,?,'planned')").run(id,e.id,e.date,e.time,e.remind_minutes).changes;if(added)this.db.prepare('INSERT INTO notifications VALUES(?,?,?,?,?,0)').run(id,e.id,e.title,e.date+' '+(e.time||'日期型提醒 '+defaultTime)+(e.location?' · '+e.location:''),stamp);}this.db.exec('COMMIT');}catch(e){this.db.exec('ROLLBACK');throw e;}
+ const hasSources=this.db.prepare("SELECT 1 FROM sqlite_master WHERE name='sources'").get();
+ const queued=this.db.prepare("SELECT d.*,e.title,e.location,"+(hasSources?"(SELECT s.source FROM sources s WHERE s.id=e.source_id)":"''")+" AS source,e.status,e.date AS current_date,e.time AS current_time,e.remind_minutes FROM reminder_delivery d LEFT JOIN events e ON e.id=d.event_id WHERE d.state IN ('planned','failed') AND d.next_at<=? LIMIT 8").all(now);const valid=[];
+ for(const d of queued){if(d.status!=='confirmed'||d.date!==d.current_date||d.time!==d.current_time||d.minutes!==d.remind_minutes||!((d.current_time||defaultTime))||d.id!==createHash('sha256').update([d.event_id,d.current_date,d.current_time||defaultTime,d.remind_minutes].join('|')).digest('hex')){this.db.prepare("UPDATE reminder_delivery SET state='cancelled' WHERE id=?").run(d.id);}else valid.push(d);}
+ if(!valid.length)return;const notice=reminderNotice(valid,defaultTime);let success=!this.setting('nativeReminders',true);if(!success)try{success=await this.notify(notice.title,notice.body,{events:notice.events});}catch{success=false;}
+ for(const d of valid){this.db.prepare('UPDATE reminder_delivery SET state=?,attempts=attempts+1,next_at=?,error=? WHERE id=?').run(success?'submitted':'failed',success?0:now+Math.min(3600000,30000*2**Math.min(d.attempts,7)),success?'':'未能提交给Windows，将自动重试',d.id);if(success)this.db.prepare("UPDATE events SET reminded_at=? WHERE id=? AND status='confirmed' AND date=? AND time IS ? AND remind_minutes=?").run(stamp,d.event_id,d.date,d.time,d.minutes);}
+ }finally{this.busy=false;}}
+}

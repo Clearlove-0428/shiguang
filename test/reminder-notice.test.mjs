@@ -1,0 +1,2 @@
+import test from'node:test';import assert from'node:assert/strict';import{reminderNotice}from'../reminder-delivery.mjs';
+test('combined reminders include each event title, time, location and source',()=>{const n=reminderNotice([{title:'交研究方案',date:'2026-10-10',time:'17:00',location:'A101',source:'思政课程群'},{title:'社团报名',date:'2026-10-11',time:null,source:'公众号'}],'09:00');assert.match(n.body,/交研究方案/);assert.match(n.body,/社团报名/);assert.match(n.body,/17:00/);assert.match(n.body,/09:00/);assert.match(n.body,/思政课程群/);assert.equal(n.events.length,2);});

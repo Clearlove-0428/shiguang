@@ -1,0 +1,32 @@
+name: 问题反馈
+description: 安装、启动、通知核对或提醒出现问题
+title: "[问题] "
+body:
+  - type: markdown
+    attributes:
+      value: 请用编造的通知复现。不要提交聊天库、密钥、账号、录音或整个数据目录。
+  - type: input
+    id: versions
+    attributes:
+      label: 版本与环境
+      description: 操作系统、Node.js、源码版本，以及相关微信或 QQ 版本
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤、预期行为与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 脱敏后的错误信息
+      description: 只保留与问题有关的几行，检查其中没有私人路径、账号或消息
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 提交前检查
+      options:
+        - label: 我已检查内容中没有私人聊天、密钥或账号信息
+          required: true

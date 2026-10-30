@@ -1,0 +1,12 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {ruleExtract,validateExtract,validDate,validTime} from '../extract.mjs';
+test('message timestamp cannot become an invented appointment',()=>{const text='通知：请提交材料，具体时间另行通知';const[e]=validateExtract([{title:'提交材料',evidence:text,date:'2026-09-15',time:'10:33'}],text,'2026-09-15T10:33');assert.equal(e.date,null);assert.equal(e.time,null);});
+test('grounding preserves relative dates and explicit times only',()=>{const text='通知：明天下午两点开会；9月18日提交材料';const items=validateExtract([{title:'开会',evidence:text,date:'2026-09-16',time:'14:00'},{title:'提交材料',evidence:text,date:'2026-09-18',time:'10:33'}],text,'2026-09-15T10:33');assert.equal(items[0].date,'2026-09-16');assert.equal(items[0].time,'14:00');assert.equal(items[1].date,'2026-09-18');assert.equal(items[1].time,null);});
+test('relative dates use message time, including year rollover',()=>{const [e]=ruleExtract('明天下午5点前提交材料','2026-12-31T10:00');assert.equal(e.date,'2027-01-01');assert.equal(e.time,'17:00');assert.equal(e.kind,'task');});
+test('next week and missing time',()=>{const [e]=ruleExtract('下周一开会','2026-09-14T10:00');assert.equal(e.date,'2026-09-21');assert.equal(e.time,null);});
+test('impossible dates and times do not schedule',()=>{assert.equal(validDate('2026-02-30'),false);assert.equal(validTime('25:00'),false);const[e]=ruleExtract('2月30日下午5点提交材料','2026-01-01T10:00');assert.equal(e.date,null);assert.equal(e.time,null);});
+test('cancellations are candidates and chatter is ignored',()=>{assert.equal(ruleExtract('今天活动取消','2026-09-14T10:00')[0].action,'cancel');assert.deepEqual(ruleExtract('好的，收到，谢谢','2026-09-14T10:00'),[]);});
+test('model evidence must be an exact quote',()=>{assert.deepEqual(validateExtract([{title:'编造',evidence:'不存在'}],'明天提交材料'),[]);const[e]=validateExtract([{title:'提交材料',evidence:'明天提交材料',date:'2026-02-30',time:'25:00'}],'明天提交材料');assert.equal(e.date,null);assert.equal(e.time,null);});
+test('unknown location is not treated as a concrete place',()=>{const[e]=validateExtract([{title:'讲座',evidence:'地点另行通知',location:'另行通知'}],'地点另行通知');assert.equal(e.location,'');});
+test('spaces introduced by PDF extraction preserve dates',()=>{const[e]=ruleExtract('请于 9 月 20 日下午 5 点前提交材料','2026-09-15T10:00');assert.equal(e.date,'2026-09-20');assert.equal(e.time,'17:00');});

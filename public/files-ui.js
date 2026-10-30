@@ -1,0 +1,14 @@
+export function filesPanel(){return `<section class="panel settings-card"><h3>QQ 聊天记录 / 其他文件</h3><p>选择文件后自动排队分析。QQ 的 TXT 导出记录会按消息时间拆分；JSON、CSV 支持时间字段。文件仅在本机处理。</p><div class="form-grid"><label>文件来源<select id="filePlatform"><option value="QQ">QQ 聊天记录</option><option value="文件">其他通知文件</option></select></label><label>原始通知时间（没有时间字段时使用）<input id="fileSentAt" type="datetime-local"><small>相对日期以这个时间为基准，请核对。</small></label></div><label>来源账号（可选）<input id="fileAccount" placeholder="QQ 号或微信账号，用于区分来源"></label><label class="file-drop">选择文件并加入分析队列<input id="otherFiles" type="file" multiple accept=".txt,.md,.csv,.json,.pdf"></label><p class="hint">支持 TXT、MD、CSV、JSON、文字型 PDF。QQ 加密 DB / BAK、图片与扫描 PDF 暂不支持。</p><p class="hint">JSON：[{"text":"明天交作业","sentAt":"2026-09-15T09:00","group":"课程群"}]；CSV 列：text,sentAt,group。</p><p id="fileProgress" role="status"></p><p id="fileQueueStatus" class="hint"></p><button class="secondary" id="retryFiles">重试失败文件</button></section>`;}
+export function wireFiles({api,toast,stamp}){
+ const input=document.querySelector('#otherFiles');if(!input)return;document.querySelector('#fileSentAt').value=stamp();
+ const status=async()=>{const s=await api('files');document.querySelector('#fileQueueStatus').textContent=s.counts.map(c=>`${({queued:'等待分析',processing:'正在分析',done:'已完成',failed:'失败',ignored:'已停止关注'})[c.status]} ${c.count}`).join(' · ')||'尚无文件任务';};status().catch(()=>{});
+ document.querySelector('#retryFiles').onclick=async()=>{await api('files/retry',{});await status();};
+ input.onchange=async()=>{const selected=[...input.files],at=document.querySelector('#fileSentAt').value,platform=document.querySelector('#filePlatform').value,account=document.querySelector('#fileAccount').value.trim();if(!at){toast('请填写原始通知时间');input.value='';return;}input.disabled=true;
+  let completed=0;try{for(const file of selected){if(file.size>30*1024*1024)throw Error(file.name+' 超过 30MB');document.querySelector('#fileProgress').textContent='读取 '+file.name;
+   let result;if(file.name.toLowerCase().endsWith('.pdf')){const r=await fetch('/api/pdf',{method:'POST',headers:{'X-Shiguang':'1','Content-Type':'application/pdf'},body:file}),j=await r.json();if(!r.ok)throw Error(j.error);result=await api('files/text',{text:j.text,sentAt:at,source:platform+' · '+file.name,platform:platform==='QQ'?'qq':'file',account});}
+   else{const r=await fetch('/api/file',{method:'POST',headers:{'X-Shiguang':'1','X-Filename':encodeURIComponent(file.name),'X-Sent-At':at,'X-Platform':platform==='QQ'?'QQ':'file','X-Account':encodeURIComponent(account)},body:file});result=await r.json();if(!r.ok)throw Error(result.error);}
+   completed++;document.querySelector('#fileProgress').textContent=`${completed}/${selected.length} 个文件已读取；新增 ${result.added} 条，重复 ${result.duplicate} 条。后台将持续处理。`;
+  }await status();}catch(e){document.querySelector('#fileProgress').textContent=`已读取 ${completed} 个文件。${e.message}`;}finally{input.disabled=false;input.value='';}
+ };
+}
+

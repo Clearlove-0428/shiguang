@@ -1,0 +1,14 @@
+// Only human-readable message content may ground a schedule, never transport metadata.
+const decode=s=>s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&apos;/g,"'").replace(/&amp;/g,'&');
+export function messageText(raw){let text=String(raw||'');text=text.replace(/<\?xml[\s\S]*?\?>/gi,'');text=text.replace(/<msg\b[^>]*>[\s\S]*?<\/msg>/gi,xml=>{const out=[];for(const m of xml.matchAll(/<(title|des|description|content|datadesc|datatitle)\b[^>]*>([\s\S]*?)<\/\1>/gi)){const v=decode(m[2]);if(!/<(?:img|emoji|msg)\b/i.test(v))out.push(v);}return out.join('\n');});text=decode(text).replace(/<[^>]*>/g,'').replace(/https?:\/\/[^\s<>]+/gi,'').replace(/^(?:wxid_[\w]+|\d+@chatroom):\s*$/gm,'');return text.replace(/\r/g,'').replace(/\n{3,}/g,'\n\n').trim();}
+export function normalizeDates(text){const values={'零':0,'一':1,'二':2,'两':2,'三':3,'四':4,'五':5,'六':6,'七':7,'八':8,'九':9};const n=s=>s.includes('十')?((values[s.split('十')[0]]||1)*10+(values[s.split('十')[1]]||0)):values[s];return text.replace(/([一二三四五六七八九十两]{1,3})月([一二三四五六七八九十两]{1,3})(日|号)/g,(_,m,d,end)=>n(m)+'月'+n(d)+end);}
+// Mask numbering only for temporal matching; retain the original text for evidence/audit.
+export function timeEvidenceText(raw){return normalizeDates(messageText(raw)).replace(/(?<!\d)\d+(?:\s*[-—–~～至到]\s*\d+)?\s*号(?:的)?\s*(?:同学|学生|选手|考生|队员|组员|座位|床位|宿舍|楼|房间)/g,'（编号）').replace(/(?:学号|编号|订单号|房间号|版本号)[：:\s]*[\d./-]+/g,'（编号）');}
+export function hasTimeCue(raw){const t=timeEvidenceText(raw);if(/今天|明天|昨天|前天|后天|(?:上上|上|本|这|下下|下)(?:周|星期)|(?:周|星期)[一二三四五六日天]|周末|月底|月末|月初|今晚|明晚|今早|明早/.test(t))return true;
+if(/(?<!\d)(?:1[0-2]|0?[1-9])\s*月\s*(?:3[01]|[12]\d|0?[1-9])(?:日|号)?|[一二三四五六七八九十]{1,3}月[一二三四五六七八九十]{1,3}(?:日|号)/.test(t))return true;
+if(/(?<![\d.:：])(?:[01]?\d|2[0-3])[:：][0-5]\d(?!\d)|(?:凌晨|上午|下午|中午|晚上|早上)?[一二三四五六七八九十两\d]{1,3}[点时](?:半|[零一二三四五六七八九十\d]+分)?/.test(t))return true;
+return /(?:通知|于|定于|截止|时间|日期|报名|提交|公示|安排|考试|上课)/.test(t)&&/(?<![\d.])(?:20\d{2}[-/.])?(?:1[0-2]|0?[1-9])[-/.](?:3[01]|[12]\d|0?[1-9])(?![\d.]|\s*(?:元|块|%|分数|版本))/.test(t);}
+export const hasActionCue=raw=>/提交|截止|报名|申请|申报|登记|开会|会议|讲座|考试|测验|上课|调课|作业|报告|方案|材料|签到|集合|答辩|面试|缴费|交费|公示|选课|参加|出发|见面|约|提醒|记得|私发|确认|取消|改期|延期|推迟|改到|改为|发给|交给|交上|领取|交一下|帮我|请于|带上.{0,30}(?:到|来|去)/.test(messageText(raw));
+export const hasChangeCue=raw=>/(?:会议|考试|课程|上课|活动|讲座|报名|作业|安排).{0,12}(?:取消|改期|延期|推迟)|(?:取消|改期|延期|推迟).{0,12}(?:会议|考试|课程|活动|讲座|报名)|改到|改为/.test(messageText(raw));
+export const scheduleEligible=raw=>hasTimeCue(raw)||hasChangeCue(raw)||(hasActionCue(raw)&&/(?:时间|日期|截止日).{0,6}(?:待定|另行通知|稍后)/.test(messageText(raw)));
+export function nonScheduleReason(raw){const t=messageText(raw);return /(?:加|加入|进|进入)(?:一?下)?(?:这个|一下)?群/.test(t)&&!hasTimeCue(t)&&!hasChangeCue(t)&&!/(?:考试|开会|会议|答辩|提交|截止|作业|报名|讲座|上课|材料|方案|报告|时间待定|另行通知)/.test(t)?'无时间要求的加群或分组消息':'';}

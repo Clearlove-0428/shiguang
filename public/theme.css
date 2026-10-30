@@ -1,0 +1,374 @@
+.theme-wallpaper{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}.theme-wallpaper[hidden]{display:none}.theme-intro{position:fixed;inset:0;z-index:100;pointer-events:none;background:#0867e5;display:grid;place-content:center;color:white;animation:intro-out .8s ease both}.theme-intro strong{font-size:100px;font-style:italic;text-shadow:8px 8px #52eeff;transform:skew(-10deg)}.theme-intro span{letter-spacing:5px;margin:20px 0}@keyframes intro-out{0%{clip-path:inset(0);opacity:1}60%{clip-path:inset(0);opacity:1}100%{clip-path:inset(0 0 100%);opacity:0}}
+/* P3R remains legible with a fresh light-mode preference or reduced motion. */
+html[data-skin=lanxi]{background:#0642a5}
+html[data-skin=lanxi] .review-row,html[data-skin=lanxi] dialog{background:var(--paper);color:var(--ink)}
+html[data-skin=lanxi]{--bg:#0642a5;--paper:#092b64e8;--ink:#f3fcff;--muted:#add8f2;--line:#63d8ff40;--green:#1377dd;--light:#0d3b77;--scroll-thumb:#63d4ef;--scroll-track:transparent}html[data-skin=lanxi] body{background:transparent;color:var(--ink)}html[data-skin=lanxi] .sidebar{background:#052b70e8}html[data-skin=lanxi] main>header{background:#073c889c;backdrop-filter:blur(8px)}html[data-skin=lanxi] .main-content{background:#0032841f}html[data-skin=lanxi] .panel,html[data-skin=lanxi] .settings-card,html[data-skin=lanxi] .follow-row{background:var(--paper)}html[data-skin=lanxi] .overview-filters{background:#063f93f2}html[data-skin=lanxi] .sidebar nav button{border-radius:0;font-size:17px;font-weight:700;position:relative;isolation:isolate;transition:transform .2s;color:#d9f8ff}html[data-skin=lanxi] .sidebar nav button.active{color:white;transform:translateX(5px);background:#0d64d0;text-shadow:2px 2px #074397}html[data-skin=lanxi] .sidebar nav button.active:before{content:'';position:absolute;inset:4px 3px -4px -3px;background:#4fe6ee;z-index:-1;transform:skew(-13deg);clip-path:polygon(0 83%,100% 62%,100% 100%,0 100%)}html[data-skin=lanxi] h1{display:inline-block;position:relative;isolation:isolate;font-size:36px;font-style:italic;font-weight:800;letter-spacing:2px;text-shadow:3px 3px #0570d5,5px 5px #21bdd9;padding:4px 16px 7px 3px}html[data-skin=lanxi] h1:before{content:'';position:absolute;inset:45% -14px -4px -8px;z-index:-1;background:#31d1e57a;transform:skew(-18deg);clip-path:polygon(6% 0,100% 0,92% 100%,0 100%)}html[data-skin=lanxi] .schedule-row{background:#082b66e0!important}html[data-skin=lanxi] .focus-lane{background:#062760e6}html[data-skin=lanxi] .text-button{color:#9de9ff}html[data-skin=lanxi] .secondary{background:#0b4c91;color:#e4faff}html[data-skin=lanxi] .follow-toggle{font-style:italic;font-weight:700;background:#073272;color:#a3f5ff;border-radius:0}html[data-skin=lanxi] .follow-toggle[aria-pressed=true]{background:#83f3ff;color:#063371;text-shadow:1px 2px #fff8}html[data-skin=lanxi] input,html[data-skin=lanxi] select,html[data-skin=lanxi] textarea{background:#082e6d;color:white;border-color:#63d8ff65}html[data-skin=lanxi] input[type=range]{padding:0;appearance:auto;background:transparent;box-shadow:none;accent-color:#75edff;width:100%;max-width:420px;margin:12px 0}html[data-skin=lanxi][data-palette=pop] .sidebar{background:#30216f}html[data-skin=lanxi][data-palette=pop] .follow-toggle[aria-pressed=true]{background:#ffe974}html[data-skin=lanxi][data-palette=archive] .sidebar{background:#263d46}html[data-skin=lanxi][data-palette=archive] .follow-toggle[aria-pressed=true]{background:#ede4be}.reduce-motion .theme-intro{display:none}@media(prefers-reduced-motion:reduce){.theme-intro{display:none}}@media(max-width:650px){html[data-skin=lanxi] h1{font-size:24px}html[data-skin=lanxi] .sidebar nav button{font-size:12px}html[data-skin=lanxi] .sidebar nav button.active{transform:none}}
+
+html[data-skin=lanxi] .schedule-evidence p,html[data-skin=lanxi] .review-evidence{color:#e1f3ff}html[data-skin=lanxi] .schedule-date small,html[data-skin=lanxi] .schedule-task small,html[data-skin=lanxi] .schedule-header,html[data-skin=lanxi] .today-marker,html[data-skin=lanxi] .hint,html[data-skin=lanxi] .breadcrumb{color:#b7def2}.theme-date{display:none}html[data-skin=lanxi] .theme-date{display:grid;grid-template-columns:auto auto;align-items:center;gap:4px 16px;padding:8px 18px;color:white;background:#07357fcc;border:1px solid #72e9ff;transform:rotate(-5deg);box-shadow:7px 7px #00286580;transition:transform .4s;cursor:pointer}html[data-skin=lanxi] .theme-date:hover{transform:rotate(4deg) translateY(-3px)}.theme-date strong{grid-row:span 2;font-size:32px;font-weight:400}.theme-date span{font-size:12px;letter-spacing:2px}.theme-date small{font-size:12px}.theme-calendar{max-width:400px;color:var(--ink);background:var(--paper);padding:24px}.theme-calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;text-align:center;margin:18px 0}.theme-calendar-grid b{background:var(--green);color:white;border-radius:5px}.theme-calendar-grid span,.theme-calendar-grid b{padding:5px}.theme-calendar button{margin:8px;padding:8px}.reduce-motion .theme-date{transition:none}@media(max-width:700px){html[data-skin=lanxi] .theme-date{display:none}}
+
+/* Shared motion preferences also stop CSS navigation/control transitions. */
+html.reduce-motion *,html.reduce-motion *::before,html.reduce-motion *::after,html.theme-background *,html.theme-background *::before,html.theme-background *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html.reduce-motion .theme-date:hover,html.theme-background .theme-date:hover{transform:none!important}
+@media(prefers-reduced-motion:reduce){html *,html *::before,html *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}html .theme-date:hover{transform:none!important}}
+
+/* Keep every navigation action reachable in a short native WebView at high DPI.
+   Duplicate clock/workspace and decorative privacy copy yield space, not actions. */
+@media(min-width:651px) and (max-height:850px){
+ html .sidebar{padding:16px}
+ html .sidebar .workspace,html .sidebar .sidebar-clock,html .sidebar .sidebar-bottom{display:none}
+ html .sidebar .brand{margin-bottom:14px}
+ html .sidebar .nav-label{padding-bottom:3px}
+ html .sidebar .nav-label.second{margin-top:8px}
+ html .sidebar nav button{padding:8px;gap:8px;margin:2px 0;line-height:1.25}
+}
+
+/* ART DIRECTION 2026 — original presentation, shared business DOM. */
+html[data-art=studio]{--art-radius:14px;--art-ease:cubic-bezier(.18,.8,.22,1);--art-shadow:0 6px 24px #10263d08;--art-accent:var(--green);--art-rule:var(--line)}
+html[data-art=studio] .sidebar{border-right-color:var(--line)}
+html[data-art=studio] .brand{letter-spacing:2px;font-weight:600}
+html[data-art=studio] .brand small{font-size:10px;letter-spacing:1px;color:var(--muted);margin-top:7px}
+html[data-art=studio] .brand img{width:40px;height:40px}
+html[data-art=studio] .workspace{border:1px solid var(--line);box-shadow:none;padding:12px;gap:10px}
+html[data-art=studio] .sidebar-clock{border:0;padding:5px 12px 12px;margin:0;color:var(--muted);background:transparent;font-size:12px}
+html[data-art=studio] .nav-label{color:var(--muted);font-size:10px;letter-spacing:2px;padding:10px 12px 6px}
+html[data-art=studio] .sidebar nav button{font-size:clamp(14px,calc(var(--reading-size)*.86),16px);gap:10px;font-weight:500;padding:11px 12px;line-height:1.4;white-space:nowrap}
+html[data-art=studio] .nav-art-icon{width:19px;height:19px;display:inline-flex;flex:none;align-items:center;justify-content:center}
+html[data-art=studio] .nav-art-icon svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+html[data-art=studio] main>header{height:64px;min-height:64px;padding-inline:32px;border-color:var(--line);backdrop-filter:none}
+html[data-art=studio] .breadcrumb,html[data-art=studio] .breadcrumb b{color:var(--muted)}
+html[data-art=studio] .live-clock{font-size:13px;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+html[data-art=studio] .local-pill{color:var(--muted)}
+html[data-art=studio] .main-content{padding:26px 0 0 32px}
+html[data-art=studio] .page-heading{position:relative;padding-right:32px;margin-bottom:22px;gap:20px;min-height:88px}
+html[data-art=studio] .page-heading>div:first-child{min-width:0;flex:1}
+html[data-art=studio] .page-heading h1{font-size:clamp(28px,2.3vw,38px);line-height:1.25;letter-spacing:.01em}
+html[data-art=studio] .page-heading p{font-size:calc(var(--reading-size)*.76);color:var(--muted);line-height:1.6;margin-top:10px}
+html[data-art=studio] #content{padding-right:26px}
+html[data-art=studio] .overview-filters{padding-block:8px 12px;background:var(--bg);gap:9px}
+html[data-art=studio] .overview-filters :is(select,input){font-size:calc(var(--reading-size)*.76);min-height:42px}
+html[data-art=studio] :is(input,textarea,select){background:var(--paper);border-color:var(--line);color:var(--ink)}
+html[data-art=studio] :is(input,textarea,select):focus{border-color:var(--art-accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--art-accent) 13%,transparent)}
+html[data-art=studio] input[type=range]{background:transparent;accent-color:var(--art-accent);box-shadow:none;border:0;padding:0}
+html[data-art=studio] input[type=checkbox]{width:auto;accent-color:var(--art-accent)}
+html[data-art=studio] :is(.primary,.secondary){min-height:38px;line-height:1.5;box-shadow:none;border-radius:9px}
+html[data-art=studio] .primary{background:var(--art-accent);color:var(--art-on-accent,#fff)}
+html[data-art=studio] .secondary{background:var(--paper);color:var(--ink);border-color:var(--line)}
+html[data-art=studio] .text-button{color:var(--art-accent)}
+html[data-art=studio] :is(button,a,input,select,textarea):focus-visible{outline:2px solid var(--art-accent);outline-offset:3px}
+html[data-art=studio] .agenda-tools{gap:7px;margin-bottom:14px}
+html[data-art=studio] .agenda-tools button{font-size:calc(var(--reading-size)*.76);padding:8px 13px;border-radius:8px}
+html[data-art=studio] .agenda-tools button[aria-pressed=true]{background:var(--light);border-color:var(--art-accent);box-shadow:none}
+html[data-art=studio] .today-marker{font-size:12px;letter-spacing:.025em;padding:14px 18px;border-radius:10px 10px 0 0;color:var(--muted);background:transparent}
+html[data-art=studio] .agenda-columns{gap:22px;grid-template-columns:minmax(0,1fr) 300px}
+html[data-art=studio] .agenda-columns.normal-only{grid-template-columns:minmax(0,1fr)}
+html[data-art=studio] .schedule-panel{border:1px solid var(--line);border-radius:var(--art-radius);box-shadow:var(--art-shadow)}
+html[data-art=studio] .schedule-header,html[data-art=studio] .schedule-row{grid-template-columns:max(122px,calc(var(--reading-size)*6.3)) minmax(160px,.95fr) minmax(180px,1fr);gap:20px;padding:20px 22px}
+html[data-art=studio] .schedule-header{padding-block:13px;border-radius:var(--art-radius) var(--art-radius) 0 0;color:var(--muted);font-size:12px;font-weight:500;background:var(--light);letter-spacing:.06em}
+html[data-art=studio] .schedule-row{border:0;border-left:3px solid transparent;border-bottom:1px solid var(--line);box-shadow:none!important;filter:none!important;isolation:isolate}
+html[data-art=studio] .schedule-row::before,html[data-art=studio] .schedule-row::after{display:none!important}
+html[data-art=studio] .schedule-row:last-child{border-bottom:0}
+html[data-art=studio] .schedule-date{font-size:var(--reading-size);font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.5}
+html[data-art=studio] .schedule-date small{font-size:calc(var(--reading-size)*.83);color:var(--muted);margin-top:6px;font-variant-numeric:tabular-nums}
+html[data-art=studio] .schedule-task .task-title,html[data-art=studio] .schedule-evidence p{font-size:var(--reading-size);font-weight:var(--reading-weight,400);line-height:1.65}
+html[data-art=studio] .schedule-task .task-title{font-weight:max(500,var(--reading-weight,400));margin-bottom:7px;letter-spacing:.005em;color:var(--ink)}
+html[data-art=studio] .schedule-evidence p{color:var(--muted);margin:9px 0 8px;line-height:1.7;max-height:5.1em}
+html[data-art=studio] .schedule-task>small{display:inline-block;color:var(--muted);font-size:calc(var(--reading-size)*.72);margin-right:6px}
+html[data-art=studio] .remaining{font-size:calc(var(--reading-size)*.73);font-weight:500;margin-top:13px;letter-spacing:0}
+html[data-art=studio] .schedule-row.tone-focus{border-left-color:var(--art-gold,#b9862d)}
+html[data-art=studio] .schedule-row.tone-focus .remaining,html[data-art=studio] .focus-action[aria-pressed=true]{color:var(--art-gold,#9a6a1e)}
+html[data-art=studio][data-skin] .schedule-row.tone-focus{border-color:var(--line);border-left-color:var(--art-gold)}
+html[data-art=studio][data-skin] .schedule-row.tone-focus .remaining,html[data-art=studio][data-skin] .focus-action[aria-pressed=true]{color:var(--art-gold);text-shadow:none}
+html[data-art=studio] .schedule-row.tone-urgent{border-left-color:#d7784a}
+html[data-art=studio] .schedule-row.tone-expired{border-left-color:#c96e7c}
+html[data-art=studio] .row-actions{gap:3px;margin-top:9px}
+html[data-art=studio] .row-actions button,html[data-art=studio] .edit-event{font-size:calc(var(--reading-size)*.74);min-height:30px;border-radius:6px;padding:5px 7px}
+html[data-art=studio] .edit-event{margin-top:5px;background:var(--light);border-color:transparent}
+html[data-art=studio] .source-chip{font-size:calc(var(--reading-size)*.7);padding:3px 7px;border-radius:5px;background:transparent}
+html[data-art=studio] .state-chip{font-size:calc(var(--reading-size)*.68);border-radius:4px;padding:4px 7px}
+html[data-art=studio] .state-chip.later{background:var(--light);color:var(--muted)}
+html[data-art=studio] .focus-lane{background:var(--paper);border:1px solid var(--line);border-radius:var(--art-radius);padding:16px;box-shadow:var(--art-shadow)}
+html[data-art=studio] .focus-lane h2{font-size:calc(var(--reading-size)*.94);font-weight:500;letter-spacing:.025em}
+html[data-art=studio] .focus-lane>p{font-size:12px;margin:8px 0 14px;line-height:1.65;color:var(--muted)}
+html[data-art=studio] .focus-lane .focus-summary{background:var(--light);border:0;border-left:2px solid var(--art-gold,#b9862d);border-radius:6px;padding:11px 12px;margin-top:10px}
+html[data-art=studio] .focus-summary .task-title{font-size:calc(var(--reading-size)*.9);font-weight:500;color:var(--ink)}
+html[data-art=studio] .focus-summary .row-actions button{font-size:12px;min-height:26px;padding:4px}
+html[data-art=studio] .settings-card,html[data-art=studio] .review-row{border-color:var(--line);border-radius:var(--art-radius);box-shadow:var(--art-shadow);background:var(--paper)}
+html[data-art=studio] .settings-card{padding:28px}
+html[data-art=studio] .settings-card h3{font-size:calc(var(--reading-size)*1.05);letter-spacing:.02em;margin-bottom:14px}
+html[data-art=studio] .settings-card p{color:var(--muted)}
+html[data-art=studio] .settings-jump{border-radius:10px;background:var(--bg);border-color:var(--line);box-shadow:none}
+html[data-art=studio] .settings-jump button{border-radius:6px;font-size:13px}
+html[data-art=studio] .follow-row{background:var(--paper);border-color:var(--line)}
+html[data-art=studio] .follow-toggle{background:var(--light);color:var(--ink);font-style:normal}
+html[data-art=studio] .follow-toggle[aria-pressed=true]{background:var(--art-accent);color:var(--art-on-accent,#fff);text-shadow:none}
+html[data-art=studio] dialog{background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 100px #0004}
+html[data-art=studio] dialog::backdrop{background:#0a152c66;backdrop-filter:blur(3px)}
+html[data-art=studio] .theme-calendar{border-radius:14px}
+html[data-art=studio] .theme-date{display:grid;grid-template-columns:auto auto;gap:2px 12px;padding:10px 16px;flex:none;transform:none;box-shadow:none;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+html[data-art=studio] .theme-date strong{font-size:32px;font-weight:400;line-height:1.1;font-variant-numeric:tabular-nums}
+html[data-art=studio] .theme-date span,html[data-art=studio] .theme-date small{font-size:11px;letter-spacing:1px;color:var(--muted)}
+html[data-art=studio] footer{color:var(--muted);opacity:.8}
+/* Shared theme chooser: preview structure and character, not just swatches. */
+.art-theme-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0 24px}
+.art-theme-choice{padding:0;text-align:left;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink)}
+.art-theme-choice[aria-pressed=true]{outline:2px solid var(--art-accent);outline-offset:3px}
+.art-theme-copy{display:block;padding:13px 15px}
+.art-theme-copy b{display:block;font-size:16px;font-weight:600}
+.art-theme-copy small{display:block;font-size:12px;color:var(--muted);line-height:1.6;margin-top:5px}
+.art-mini{display:block;position:relative;height:116px;overflow:hidden;background:#edf2f2;border-bottom:1px solid #102b4412;isolation:isolate}
+.art-mini::before{content:'';position:absolute;inset:0 auto 0 0;width:24%;background:#dde7e8}
+.art-mini i{position:absolute;inset:36px 12px 12px 30%;background:#fff;border-radius:5px;box-shadow:0 4px 9px #122a3512}
+.art-mini i::before{content:'';position:absolute;inset:13px 13px auto;height:3px;background:#ccd7d8;box-shadow:0 14px #e3e9ea,0 28px #e3e9ea}
+.art-mini em{position:absolute;left:30%;top:11px;color:#314b55;font-size:15px;letter-spacing:.1em;font-style:normal;font-weight:600}
+.art-mini.lanxi{background:linear-gradient(120deg,#102a69,#1b76d6)}
+.art-mini.lanxi::before{background:#06152e;transform:skew(-8deg);width:22%}
+.art-mini.lanxi i{background:#081d48;border:1px solid #43cbee66;border-radius:0;transform:skew(-4deg)}
+.art-mini.lanxi i::before{background:#53cbd9;box-shadow:0 14px #294b7f,0 28px #294b7f}
+.art-mini.lanxi em{color:#fff;font-style:italic;text-shadow:2px 2px #149ddd}
+.art-mini.folio{background:#ece4d4}
+.art-mini.folio::before{background:#e0d3bc;border-right:1px solid #a17b5355}
+.art-mini.folio i{background:#fffaf0;border-radius:0;box-shadow:3px 3px #ccbda355}
+.art-mini.folio i::before{inset:12px 12px auto;height:1px;background:#bcab8e;box-shadow:0 12px #ded4bf,0 24px #ded4bf,0 36px #ded4bf}
+.art-mini.folio em{color:#684c34;font-family:Georgia,'SimSun',serif;font-weight:400}
+.art-sound-demo{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+html[data-art=studio] .art-sound-demo button{font-size:13px}
+html[data-art=studio] .sound-choice[aria-pressed=true]{border-color:var(--art-accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--art-accent) 16%,transparent)}
+html[data-art=studio] .sound-glyph{color:var(--art-accent)}
+/* 01 / 晴窗 — cool mineral surfaces, quiet hierarchy, soft edges. */
+html[data-art=studio][data-skin=classic]{--bg:#f1f4f5;--paper:#fff;--ink:#253748;--muted:#647583;--line:#dde4e7;--light:#f2f6f7;--green:#356b78;--art-accent:var(--art-user-accent,#356b78);--art-gold:#956b24;--scroll-thumb:#91a7ae;--art-radius:15px}
+html[data-art=studio][data-skin=classic][data-theme=dark]{--bg:#151e25;--paper:#1d2a34;--ink:#e7eef3;--muted:#a7b7c3;--line:#34454f;--light:#24343f;--art-accent:var(--art-user-accent,#8bceda);--art-on-accent:#142a34;--art-gold:#e7c17d}
+html[data-art=studio][data-skin=classic] .sidebar{background:var(--light)}
+html[data-art=studio][data-skin=classic] main>header{background:var(--bg)}
+html[data-art=studio][data-skin=classic] .page-heading h1{font-weight:600;letter-spacing:-.03em}
+html[data-art=studio][data-skin=classic] .sidebar nav button.active{background:var(--paper);color:var(--art-accent);box-shadow:0 2px 10px #1b36400c}
+html[data-art=studio][data-skin=classic] .workspace{background:var(--paper)}
+html[data-art=studio][data-skin=classic] .theme-date{border:0;border-left:1px solid var(--line);border-radius:0;background:transparent}
+html[data-art=studio][data-skin=classic] .focus-lane{border-top:3px solid var(--art-gold)}
+/* 02 / 潮光 — angled identity, luminous edges, deep readable panels. */
+html[data-art=studio][data-skin=lanxi]{--bg:#081c3f;--paper:#102b54;--ink:#eef8ff;--muted:#adc5df;--line:#345274;--light:#19375e;--green:#347dda;--art-accent:#8ce8f2;--art-on-accent:#082342;--art-gold:#e9cc87;--scroll-thumb:#658ab1;--art-radius:5px;--art-shadow:none;color-scheme:dark}
+html[data-art=studio][data-skin=lanxi][data-theme=light]{--bg:#dcebf8;--paper:#f5faff;--ink:#133553;--muted:#456784;--line:#9dbdd5;--light:#e4eff9;--art-accent:#14639c;--art-on-accent:#fff;--art-gold:#8b651b;color-scheme:light}
+html[data-art=studio][data-skin=lanxi] body{background:var(--bg)}
+html[data-art=studio][data-skin=lanxi] .theme-wallpaper{z-index:0;opacity:.38}
+html[data-art=studio][data-skin=lanxi] main{position:relative;z-index:1}
+html[data-art=studio][data-skin=lanxi] .sidebar{z-index:2;background:#071a35;color:#dff4ff;border-right:1px solid #5cd5eb38}
+html[data-art=studio][data-skin=lanxi] .sidebar :is(.brand,.nav-label,.sidebar-clock,.brand small){color:#bcd8ef}
+html[data-art=studio][data-skin=lanxi] .sidebar .workspace{background:#102b4b;border-color:#345171;color:#dff4ff;border-radius:4px}
+html[data-art=studio][data-skin=lanxi] .sidebar nav button{color:#bcd8ef;border-radius:2px;transform:none;position:relative;font-weight:600}
+html[data-art=studio][data-skin=lanxi] .sidebar nav button.active{background:#1165b9;color:#fff;text-shadow:none;transform:translateX(3px);box-shadow:inset 3px 0 #8bffff}
+html[data-art=studio][data-skin=lanxi] .sidebar nav button.active::before{inset:auto 0 -2px 0;height:3px;background:#70ecf1;transform:skew(-15deg);clip-path:none}
+html[data-art=studio][data-skin=lanxi] main>header{background:color-mix(in srgb,var(--bg) 94%,transparent);border-color:var(--line)}
+html[data-art=studio][data-skin=lanxi] .main-content{background:transparent}
+html[data-art=studio][data-skin=lanxi] .page-heading{border-bottom:1px solid var(--line);padding-bottom:18px}
+html[data-art=studio][data-skin=lanxi] .page-heading h1{font-weight:750;font-style:italic;letter-spacing:.08em;padding:0 8px 4px 0;text-shadow:2px 3px color-mix(in srgb,var(--art-accent) 45%,transparent);font-size:clamp(30px,2.7vw,44px)}
+html[data-art=studio][data-skin=lanxi] h1::before{inset:auto -12px 0 0;height:8px;background:var(--art-accent);opacity:.3;transform:skew(-22deg)}
+html[data-art=studio][data-skin=lanxi] .theme-date{background:var(--paper);border-color:var(--art-accent);border-radius:0;transform:skew(-6deg);box-shadow:5px 5px color-mix(in srgb,var(--art-accent) 18%,transparent)}
+html[data-art=studio][data-skin=lanxi] .overview-filters{background:var(--bg)}
+html[data-art=studio][data-skin=lanxi] .schedule-panel{border:0;background:transparent;box-shadow:none}
+html[data-art=studio][data-skin=lanxi] .schedule-header{border-bottom:1px solid var(--art-accent);background:transparent;color:var(--muted);margin-bottom:10px;border-radius:0}
+html[data-art=studio][data-skin=lanxi] .schedule-row{background:var(--paper)!important;border:1px solid var(--line);border-left:3px solid var(--line);margin-bottom:12px;border-radius:3px;padding-block:22px;box-shadow:inset 0 1px #ffffff06!important}
+html[data-art=studio][data-skin=lanxi] .schedule-row.tone-focus{border-left-color:var(--art-gold)}
+html[data-art=studio][data-skin=lanxi] .schedule-date{border-right:1px solid var(--line);padding-right:10px;color:var(--art-accent);letter-spacing:-.025em}
+html[data-art=studio][data-skin=lanxi] .schedule-row.tone-expired{border-left-color:#dc8194}
+html[data-art=studio][data-skin=lanxi] .focus-lane{border-top:2px solid var(--art-accent);background:var(--bg)}
+html[data-art=studio][data-skin=lanxi] .focus-lane .focus-summary{background:var(--paper);border:1px solid var(--line);border-left:2px solid var(--art-gold);border-radius:2px}
+html[data-art=studio][data-skin=lanxi] :is(.primary,.secondary,.agenda-tools button,.settings-jump button){border-radius:3px}
+html[data-art=studio][data-skin=lanxi] .settings-card{border-top:2px solid var(--line)}
+html[data-art=studio][data-skin=lanxi] .settings-card h3{color:var(--art-accent)}
+html[data-art=studio][data-skin=lanxi] dialog{border-radius:6px;border-top:3px solid var(--art-accent)}
+html[data-art=studio][data-skin=lanxi] .source-chip.qq{color:var(--art-accent);border-color:var(--line)}
+html[data-art=studio][data-skin=lanxi] .source-chip.wechat{color:#9ddbbf;border-color:var(--line)}
+html[data-art=studio][data-skin=lanxi][data-theme=light] .source-chip.wechat{color:#247452}
+html[data-art=studio][data-skin=lanxi][data-palette=pop]{--art-accent:#e0b9ff;--art-gold:#efd383}
+html[data-art=studio][data-skin=lanxi][data-palette=archive]{--art-accent:#a6d2d7;--art-gold:#dfcdb0}
+html[data-art=studio][data-skin=lanxi][data-theme=light][data-palette=pop]{--art-accent:#79419f;--art-gold:#856a22}
+html[data-art=studio][data-skin=lanxi][data-theme=light][data-palette=archive]{--art-accent:#38646a;--art-gold:#796541}
+/* 03 / 纸上编年 — printed ledger, warm stock, margin notes. */
+html[data-art=studio][data-skin=folio]{--bg:#eee8dc;--paper:#fffcf5;--ink:#433f35;--muted:#766d5e;--line:#d8cfbc;--light:#f3edde;--green:#72503a;--art-accent:#80563c;--art-on-accent:#fffaf1;--art-gold:#9b672c;--folio-accent:#80563c;--folio-rust:#966448;--scroll-thumb:#b3a489;--art-radius:3px;--art-shadow:3px 4px 0 #9782670c}
+html[data-art=studio][data-skin=folio][data-theme=dark]{--bg:#242520;--paper:#30312a;--ink:#f1e9d8;--muted:#c4baa7;--line:#535447;--light:#393b31;--art-accent:#e4c598;--art-on-accent:#30312a;--art-gold:#e3b47b;--folio-accent:#e4c598;--folio-rust:#dca88b}
+html[data-art=studio][data-skin=folio] body{background:var(--bg)}
+html[data-art=studio][data-skin=folio] .sidebar{background:var(--light);border-right:1px solid var(--line);box-shadow:inset -6px 0 var(--bg)}
+html[data-art=studio][data-skin=folio] .sidebar nav button{border:0;border-bottom:1px solid var(--line);border-radius:0;font-weight:400}
+html[data-art=studio][data-skin=folio] .sidebar nav button.active{background:var(--paper);color:var(--art-accent);box-shadow:inset 3px 0 var(--art-accent)}
+html[data-art=studio][data-skin=folio] .workspace{border-radius:2px;background:var(--paper)}
+html[data-art=studio][data-skin=folio] main>header{background:var(--bg);border-bottom:1px solid var(--line)}
+html[data-art=studio][data-skin=folio] .page-heading{padding-bottom:18px;border-bottom:3px double var(--art-accent)}
+html[data-art=studio][data-skin=folio] .page-heading h1{font-weight:400;letter-spacing:.12em;font-size:36px}
+html[data-art=studio][data-skin=folio]:not([data-font=custom]) :is(.page-heading h1,.brand,.theme-date strong){font-family:Georgia,'SimSun',serif}
+html[data-art=studio][data-skin=folio] .theme-date{border:1px solid var(--line);border-top:3px solid var(--art-accent);border-radius:1px;background:var(--paper);box-shadow:3px 3px 0 var(--line)}
+html[data-art=studio][data-skin=folio] .theme-date strong{font-size:36px}
+html[data-art=studio][data-skin=folio] .today-marker{padding-left:0;letter-spacing:.15em;text-transform:uppercase}
+html[data-art=studio][data-skin=folio] .schedule-panel{border-top:2px solid var(--art-accent);background:var(--paper);border-radius:0}
+html[data-art=studio][data-skin=folio] .schedule-header{grid-template-columns:max(130px,calc(var(--reading-size)*6.3)) 1fr;letter-spacing:.15em;background:var(--paper);border-bottom:1px solid var(--line);padding-block:14px}
+html[data-art=studio][data-skin=folio] .schedule-header>span:nth-child(3){display:none}
+html[data-art=studio][data-skin=folio] .schedule-row{grid-template-columns:max(130px,calc(var(--reading-size)*6.3)) minmax(0,1fr);gap:10px 22px;padding:23px 24px;border-left:0;background:var(--paper)!important}
+html[data-art=studio][data-skin=folio] .schedule-date{grid-column:1;grid-row:1/3;border-right:1px solid var(--line);padding-right:18px;color:var(--ink)}
+html[data-art=studio][data-skin=folio] .schedule-task{grid-column:2;grid-row:1;display:flex;align-items:center;align-content:flex-start;flex-wrap:wrap;gap:3px 7px}
+html[data-art=studio][data-skin=folio] .schedule-task>.task-title{flex-basis:100%;margin:0 0 4px}
+html[data-art=studio][data-skin=folio] .schedule-task>.row-actions{margin:0;display:flex;flex-wrap:wrap}
+html[data-art=studio][data-skin=folio] .schedule-task>.edit-event{margin:0}
+html[data-art=studio][data-skin=folio] .schedule-evidence{grid-column:2;grid-row:2;border-top:1px dashed var(--line);padding-top:9px}
+html[data-art=studio][data-skin=folio] .schedule-evidence p{margin:3px 0 6px}
+html[data-art=studio][data-skin=folio] .focus-lane{padding:16px;background:transparent;border:0;border-top:2px solid var(--art-accent);box-shadow:none;border-radius:0}
+html[data-art=studio][data-skin=folio] .focus-lane .focus-summary{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--art-gold);border-radius:0;box-shadow:2px 3px #a78f6710}
+html[data-art=studio][data-skin=folio] :is(.primary,.secondary,.agenda-tools button,.sound-choice,.settings-jump button,input,textarea,select){border-radius:3px}
+html[data-art=studio][data-skin=folio] .settings-card{border-top:2px solid var(--art-accent)}
+html[data-art=studio][data-skin=folio] dialog{border-radius:3px;border-top:3px solid var(--art-accent)}
+/* Density, user wallpaper and accessibility win over art direction. */
+html[data-art=studio][data-density=compact] .schedule-row{padding-block:14px;gap:12px 16px}
+html[data-art=studio][data-density=compact] .schedule-evidence p{line-height:1.55;margin-block:4px 6px;max-height:4.65em}
+html[data-art=studio][data-density=compact] .focus-summary{padding:9px 10px}
+html[data-art=studio] body.has-wallpaper :is(.sidebar,main>header,.page-heading){background:color-mix(in srgb,var(--paper) 94%,transparent)}
+html[data-art=studio] body.has-wallpaper .page-heading{padding:14px 20px}
+html[data-art=studio] body.has-wallpaper .schedule-row{background:color-mix(in srgb,var(--paper) 96%,transparent)!important}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ html[data-art=studio]:not(.reduce-motion):not(.theme-background) .theme-date:hover{transform:translateY(-2px)}
+ html[data-art=studio]:not(.reduce-motion):not(.theme-background) .art-theme-choice:hover{transform:translateY(-3px);box-shadow:0 8px 18px #00000012}
+ html[data-art=studio]:not(.reduce-motion):not(.theme-background) .sidebar nav button:not(.active):hover{background:var(--light);color:var(--ink)}
+ html[data-art=studio][data-skin=lanxi]:not(.reduce-motion):not(.theme-background) .sidebar nav button:not(.active):hover{background:#17395d;color:#fff}
+}
+html[data-art=studio].reduce-motion *,html[data-art=studio].theme-background *{animation:none!important;transition:none!important}
+@media(max-width:1300px){
+ html[data-art=studio] .agenda-columns{grid-template-columns:1fr}
+ html[data-art=studio] .focus-lane{grid-row:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ html[data-art=studio] .focus-lane[hidden]{display:none}
+ html[data-art=studio] .focus-lane>h2,html[data-art=studio] .focus-lane>p{grid-column:1/-1;margin:0}
+ html[data-art=studio] .focus-lane .focus-summary{margin:0}
+}
+@media(min-width:651px) and (max-height:1000px){
+ html[data-art=studio] .sidebar-clock{display:none}
+ html[data-art=studio] .sidebar .workspace{margin-block:16px}
+ html[data-art=studio] .sidebar .nav-label.second{margin-top:18px}
+}
+@media(min-width:651px) and (max-height:850px){
+ html[data-art=studio] .sidebar nav button{padding:8px 10px;margin-block:2px;font-size:14px}
+ html[data-art=studio] .sidebar .nav-label{padding-block:4px}
+ html[data-art=studio] .sidebar .nav-label.second{margin-top:8px}
+ html[data-art=studio] .page-heading{min-height:68px;margin-bottom:12px;padding-bottom:10px}
+ html[data-art=studio] .main-content{padding-top:17px}
+}
+@media(max-width:950px){
+ html[data-art=studio] .art-theme-choices{grid-template-columns:1fr}
+ html[data-art=studio] .art-theme-choice{display:grid;grid-template-columns:120px minmax(0,1fr);align-items:center}
+ html[data-art=studio] .art-mini{height:94px;border-bottom:0}
+ html[data-art=studio] .schedule-header,html[data-art=studio] .schedule-row{grid-template-columns:max(110px,calc(var(--reading-size)*6.3)) minmax(0,1fr);gap:12px 18px}
+ html[data-art=studio] .schedule-header>span:nth-child(3){display:none}
+ html[data-art=studio] .schedule-date{grid-row:1/3}
+ html[data-art=studio] .schedule-task{grid-column:2;grid-row:1}
+ html[data-art=studio] .schedule-evidence{grid-column:2;grid-row:2}
+}
+@media(max-width:650px){
+ html[data-art=studio] .sidebar{padding:10px 12px;box-shadow:none}
+ html[data-art=studio] .brand{font-size:19px}
+ html[data-art=studio] .brand img{width:29px;height:29px}
+ html[data-art=studio] .brand small{font-size:9px;margin-top:3px}
+ html[data-art=studio] .sidebar nav button{font-size:12px;padding:8px 6px;gap:5px;white-space:nowrap}
+ html[data-art=studio] .nav-art-icon,html[data-art=studio] .nav-art-icon svg{width:15px;height:15px}
+ html[data-art=studio] main>header{height:48px;min-height:48px;padding-inline:15px}
+ html[data-art=studio] .live-clock{font-size:11px}
+ html[data-art=studio] .main-content{padding:16px 0 0 14px}
+ html[data-art=studio] .page-heading{padding-right:15px;min-height:48px;gap:12px;margin-bottom:12px}
+ html[data-art=studio] .page-heading h1{font-size:26px}
+ html[data-art=studio] .page-heading .theme-date{display:none}
+ html[data-art=studio] #content{padding-right:10px}
+ html[data-art=studio] .overview-filters :is(select,input){font-size:13px}
+ html[data-art=studio] .overview-filters{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ html[data-art=studio] .overview-filters select{width:100%;min-width:0;max-width:none}
+ html[data-art=studio] .overview-filters .agenda-search{grid-column:1/-1;min-width:0;max-width:none;order:-1}
+ html[data-art=studio] .overview-filters button{min-width:0;padding-inline:8px}
+ html[data-art=studio] .agenda-tools button{font-size:13px;padding:8px}
+ html[data-art=studio] .schedule-header{display:none}
+ html[data-art=studio] .schedule-row{display:flex;flex-direction:column;gap:14px;padding:18px}
+ html[data-art=studio] .schedule-date{border-right:0;padding:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:7px 13px;font-size:var(--reading-size)}
+ html[data-art=studio] .schedule-date small,html[data-art=studio] .schedule-date .remaining{margin:0}
+ html[data-art=studio] .schedule-task .task-title,html[data-art=studio] .schedule-evidence p{font-size:var(--reading-size)}
+ html[data-art=studio] .schedule-evidence{border-top:1px dashed var(--line);padding-top:10px}
+ html[data-art=studio] .focus-lane{display:block}
+ html[data-art=studio] .focus-lane .focus-summary{margin-top:10px}
+ html[data-art=studio] .settings-card{padding:19px}
+ html[data-art=studio] .art-theme-copy{padding:10px}
+ html[data-art=studio] .art-theme-copy b{font-size:15px}
+ html[data-art=studio] .art-theme-copy small{font-size:11px}
+ html[data-art=studio] dialog{border-radius:8px}
+}
+
+/* Restore the existing Lanxi artwork above. Only fit/accessibility adaptations here. */
+html[data-art=lanxi-restored]{--art-accent:#7decff}
+html[data-art=lanxi-restored] .sidebar nav button:not(.active):hover{background:#0b4c91;color:#fff}
+html[data-art=lanxi-restored] .art-mini.lanxi{background:linear-gradient(135deg,#1730e7,#087be4 65%,#24d6e7)}
+html[data-art=lanxi-restored] .schedule-task .task-title,
+html[data-art=lanxi-restored] .schedule-evidence p{font-size:var(--reading-size);line-height:1.65}
+@media(min-width:951px){html[data-art=lanxi-restored] .schedule-row,html[data-art=lanxi-restored] .schedule-header{grid-template-columns:max(120px,calc(var(--reading-size)*6.3)) minmax(140px,.8fr) minmax(180px,1.2fr)}}
+@media(max-width:1300px){html[data-art=lanxi-restored] .focus-lane{grid-row:auto}}
+@media(min-width:651px) and (max-height:950px){html[data-art=lanxi-restored] .sidebar-clock{display:none}html[data-art=lanxi-restored] .sidebar .workspace{margin-block:16px}html[data-art=lanxi-restored] .sidebar nav button{font-size:16px}}
+@media(min-width:651px) and (max-height:850px){html[data-art=lanxi-restored] .sidebar nav button{font-size:14px}}
+@media(max-width:950px){html[data-art=lanxi-restored] .art-theme-choices{grid-template-columns:1fr}html[data-art=lanxi-restored] .art-theme-choice{display:grid;grid-template-columns:120px minmax(0,1fr);align-items:center}html[data-art=lanxi-restored] .art-mini{height:94px}}
+@media(max-width:650px){html[data-art=lanxi-restored] .overview-filters{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}html[data-art=lanxi-restored] .overview-filters select{width:100%;min-width:0;max-width:none}html[data-art=lanxi-restored] .overview-filters .agenda-search{grid-column:1/-1;min-width:0;max-width:none;order:-1}html[data-art=lanxi-restored] .overview-filters button{min-width:0;padding-inline:8px}html[data-art=lanxi-restored] .art-theme-copy{padding:10px}html[data-art=lanxi-restored] .art-theme-copy b{font-size:15px}html[data-art=lanxi-restored] .art-theme-copy small{font-size:11px}}
+
+/* Shared heading columns remain anchored while the page title changes. */
+@media(min-width:1001px){
+ html body .page-heading{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:24px;align-items:center;min-height:136px;}
+ html body .page-heading>div:first-child{min-width:0;}
+ html body .page-heading #themeDate{justify-self:end;margin:0;}
+ html body .page-heading #newImport{justify-self:end;align-self:center;margin:0;}
+}
+/* Fullscreen navigation keeps primary entries readable and settings at the foot. */
+@media(min-width:1001px){
+ :root{--sidebar-width:clamp(240px,17vw,280px)}
+ html[data-skin] body .sidebar{width:var(--sidebar-width);padding:28px 22px 20px}
+ html[data-skin] body main{margin-left:var(--sidebar-width)}
+ html[data-skin] body .sidebar .brand{font-size:28px;gap:14px}
+ html[data-skin] body .sidebar .brand small{font-size:12px;letter-spacing:.5px}
+ html[data-skin] body .sidebar .workspace{margin:24px 0 18px;font-size:14px;min-height:66px}
+ html[data-skin] body .sidebar .workspace small{font-size:12px}
+ html[data-skin] body .sidebar-clock{font-size:14px;padding:10px 12px;margin:0 0 16px}
+ html[data-skin] body .sidebar nav{display:flex;flex-direction:column;flex:1;min-height:0;gap:8px;margin:0}
+ html[data-skin] body .sidebar nav button{font-size:max(17px,calc(var(--reading-size,16px)*.94));min-height:56px;padding:14px 16px;margin:0;gap:14px}
+ html[data-skin] body .sidebar nav button>span:first-child{font-size:23px}
+ html[data-skin] body .sidebar nav [data-view=settings]{margin-top:auto;min-height:52px}
+ html[data-skin] body .sidebar .sidebar-bottom{display:none}
+ html[data-skin] body .review-platform-title{font-size:20px;margin:26px 0 14px}
+ html[data-skin] body .review-row .task-title{font-size:max(18px,var(--reading-size,16px));line-height:1.5}
+ html[data-skin] body .review-row small{font-size:14px;line-height:1.65}
+ html[data-skin] body .review-evidence{font-size:max(15px,calc(var(--reading-size,16px)*.94));line-height:1.85}
+ html[data-skin] body .review-sources{gap:10px}
+ html[data-skin] body .review-source{min-height:42px;padding:8px 12px;font-size:15px}
+}
+/* Review decisions have a clear primary action and comfortable hit areas. */
+html[data-skin] body .review-head{gap:24px;align-items:center}
+html[data-skin] body .review-head>div:first-child{flex:1;min-width:0}
+html[data-skin] body .review-row .quick-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;flex-shrink:0}
+html[data-skin] body .review-row .quick-actions button{min-height:48px;min-width:88px;padding:12px 18px;font-size:16px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid var(--line)}
+html[data-skin] body .review-row .review-action-confirm{min-width:124px;border-color:transparent;box-shadow:0 3px 10px #0001}
+html[data-skin] body .review-row .review-action-ignore{background:transparent;color:var(--muted)}
+html[data-skin] body .review-row .review-action-edit{background:var(--light);color:var(--ink)}
+html[data-skin] body .review-row .action-mark{font-size:20px;line-height:1}
+@media(max-width:1100px){html[data-skin] body .review-head{align-items:flex-start;flex-direction:column;gap:16px}html[data-skin] body .review-row .quick-actions{width:100%}html[data-skin] body .review-row .quick-actions button{flex:1;padding:10px 12px;min-width:70px}}
+html[data-skin] body :is(.more-advanced,.advanced-settings){margin:26px 0;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:18px 22px}
+html[data-skin] body :is(.more-advanced,.advanced-settings)>summary{font-size:17px;font-weight:600;cursor:pointer;min-height:36px;line-height:36px}
+html[data-skin] body .more-advanced .more-grid{margin-top:18px}
+html[data-skin] body .advanced-settings>.settings-card{margin-top:20px}
+
+/* Palette choices must affect rendered controls, including the fallback themes. */
+html[data-skin=classic][data-palette=pop],html[data-skin=folio][data-palette=pop]{
+ --bg:#f5f1fa;--paper:#fff;--ink:#352744;--muted:#756680;--line:#e3d9ed;--light:#ede5f7;
+ --art-accent:var(--art-user-accent,#70449d);--art-on-accent:#fff;--folio-accent:#70449d;--palette-sidebar:#eee7f7;
+}
+html[data-skin=classic][data-palette=archive],html[data-skin=folio][data-palette=archive]{
+ --bg:#f0f3f1;--paper:#fff;--ink:#283d35;--muted:#62766b;--line:#d9e3dc;--light:#e4ede6;
+ --art-accent:var(--art-user-accent,#365e49);--art-on-accent:#fff;--folio-accent:#365e49;--palette-sidebar:#e7eee8;
+}
+html[data-skin=classic][data-palette=pop][data-theme=dark],html[data-skin=folio][data-palette=pop][data-theme=dark]{
+ --bg:#231d2e;--paper:#30273c;--ink:#f3eafa;--muted:#c8b8d6;--line:#594768;--light:#40324f;
+ --art-accent:var(--art-user-accent,#c3a1ed);--art-on-accent:#261d33;--folio-accent:#c3a1ed;--palette-sidebar:#292134;
+}
+html[data-skin=classic][data-palette=archive][data-theme=dark],html[data-skin=folio][data-palette=archive][data-theme=dark]{
+ --bg:#1c2821;--paper:#29382e;--ink:#edf4ec;--muted:#bccdbf;--line:#4b6151;--light:#364c3c;
+ --art-accent:var(--art-user-accent,#b3d3ac);--art-on-accent:#1e2d23;--folio-accent:#b3d3ac;--palette-sidebar:#223027;
+}
+html[data-skin=classic]:is([data-palette=pop],[data-palette=archive]) .sidebar,
+html[data-skin=folio]:is([data-palette=pop],[data-palette=archive]) .sidebar{background:var(--palette-sidebar)}
+
+/* Keep overdue dates and titles readable against the blue source theme. */
+html[data-skin=lanxi] .overdue .schedule-date,
+html[data-skin=lanxi] .overdue .task-title,
+html[data-skin=lanxi] .review-row.overdue .review-head small{color:#ffd2dc}
